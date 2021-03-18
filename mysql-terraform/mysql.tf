@@ -1,7 +1,7 @@
 provider "azurerm" {
   features {
-    
-  } 
+
+  }
 }
 
 resource "azurerm_resource_group" "prd" {
@@ -24,17 +24,17 @@ resource "azurerm_mysql_server" "prd" {
   infrastructure_encryption_enabled = false
   version = "5.7"
 
-  
+
 
 }
 
 resource "azurerm_mysql_firewall_rule" "prd" {
     name = "prd-mysql-firewall-rule"
     server_name = azurerm_mysql_server.prd.name
-    start_ip_address = "93.66.54.100"
-    end_ip_address = "93.66.54.100"
+    start_ip_address = "*"
+    end_ip_address = "*"
   resource_group_name = azurerm_resource_group.prd.name
-  
+
 }
 
 resource "azurerm_mysql_database" "prd" {
